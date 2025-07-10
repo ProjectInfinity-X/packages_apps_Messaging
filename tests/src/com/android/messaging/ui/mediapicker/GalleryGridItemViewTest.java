@@ -30,7 +30,7 @@ import com.android.messaging.ui.AsyncImageView;
 import com.android.messaging.ui.ViewTest;
 import com.android.messaging.util.UriUtil;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -72,7 +72,7 @@ public class GalleryGridItemViewTest extends ViewTest<GalleryGridItemView> {
 
     public void testBind() {
         Mockito.when(mockHost.isMultiSelectEnabled()).thenReturn(false);
-        Mockito.when(mockHost.isItemSelected(Matchers.<GalleryGridItemData>any()))
+        Mockito.when(mockHost.isItemSelected(ArgumentMatchers.<GalleryGridItemData>any()))
                 .thenReturn(false);
         final GalleryGridItemView view = getView();
         final FakeCursor cursor = TestDataFactory.getGalleryGridCursor();
@@ -85,7 +85,7 @@ public class GalleryGridItemViewTest extends ViewTest<GalleryGridItemView> {
 
     public void testBindMultiSelectUnSelected() {
         Mockito.when(mockHost.isMultiSelectEnabled()).thenReturn(true);
-        Mockito.when(mockHost.isItemSelected(Matchers.<GalleryGridItemData>any()))
+        Mockito.when(mockHost.isItemSelected(ArgumentMatchers.<GalleryGridItemData>any()))
                 .thenReturn(false);
         final GalleryGridItemView view = getView();
         final FakeCursor cursor = TestDataFactory.getGalleryGridCursor();
@@ -98,7 +98,7 @@ public class GalleryGridItemViewTest extends ViewTest<GalleryGridItemView> {
 
     public void testBindMultiSelectSelected() {
         Mockito.when(mockHost.isMultiSelectEnabled()).thenReturn(true);
-        Mockito.when(mockHost.isItemSelected(Matchers.<GalleryGridItemData>any()))
+        Mockito.when(mockHost.isItemSelected(ArgumentMatchers.<GalleryGridItemData>any()))
                 .thenReturn(true);
         final GalleryGridItemView view = getView();
         final FakeCursor cursor = TestDataFactory.getGalleryGridCursor();
@@ -111,7 +111,7 @@ public class GalleryGridItemViewTest extends ViewTest<GalleryGridItemView> {
 
     public void testClick() {
         Mockito.when(mockHost.isMultiSelectEnabled()).thenReturn(false);
-        Mockito.when(mockHost.isItemSelected(Matchers.<GalleryGridItemData>any()))
+        Mockito.when(mockHost.isItemSelected(ArgumentMatchers.<GalleryGridItemData>any()))
                 .thenReturn(false);
         final GalleryGridItemView view = getView();
         final FakeCursor cursor = TestDataFactory.getGalleryGridCursor();
@@ -123,7 +123,7 @@ public class GalleryGridItemViewTest extends ViewTest<GalleryGridItemView> {
 
     public void testBindTwice() {
         Mockito.when(mockHost.isMultiSelectEnabled()).thenReturn(true);
-        Mockito.when(mockHost.isItemSelected(Matchers.<GalleryGridItemData>any()))
+        Mockito.when(mockHost.isItemSelected(ArgumentMatchers.<GalleryGridItemData>any()))
                 .thenReturn(false);
         final GalleryGridItemView view = getView();
         final FakeCursor cursor = TestDataFactory.getGalleryGridCursor();

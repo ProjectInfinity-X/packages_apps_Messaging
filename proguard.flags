@@ -14,10 +14,18 @@
 #
 # Keep enough data for stack traces
 -renamesourcefileattribute SourceFile
--keepattributes SourceFile,LineNumberTable,*Annotation*
+-keepattributes SourceFile,
+                LineNumberTable,
+                RuntimeVisibleAnnotations,
+                RuntimeVisibleParameterAnnotations,
+                RuntimeVisibleTypeAnnotations,
+                AnnotationDefault
 
 # Keep classes and methods that have the guava @VisibleForTesting annotation
--keep @com.google.common.annotations.VisibleForTesting class *
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep @com.google.common.annotations.VisibleForTesting class * {
+  void <init>();
+}
 -keepclassmembers class * {
   @com.google.common.annotations.VisibleForTesting *;
 }
@@ -26,19 +34,46 @@
 -keep class com.android.messaging.*.*.* { *; }
 
 # Keep methods that have the @VisibleForAnimation annotation
--keep @interface com.android.messaging.annotation.VisibleForAnimation
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep @interface com.android.messaging.annotation.VisibleForAnimation {
+  void <init>();
+}
 -keepclassmembers class * {
   @com.android.messaging.annotation.VisibleForAnimation *;
 }
 
--keep public class * extends android.app.Activity
--keep public class * extends android.app.Application
--keep public class * extends android.app.Service
--keep public class * extends android.content.BroadcastReceiver
--keep public class * extends android.content.ContentProvider
--keep public class * extends android.app.backup.BackupAgentHelper
--keep public class * extends android.preference.Preference
--keep public class * extends androidx.fragment.app.Fragment
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.app.Activity {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.app.Application {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.app.Service {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.content.BroadcastReceiver {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.content.ContentProvider {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.app.backup.BackupAgentHelper {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends android.preference.Preference {
+  void <init>();
+}
+# TODO(b/373579455): Evaluate if <init> needs to be kept.
+-keep public class * extends androidx.fragment.app.Fragment {
+  void <init>();
+}
 -keep public class com.android.vcard.* { *; }
 
 -keep class androidx.collection.* { *; }

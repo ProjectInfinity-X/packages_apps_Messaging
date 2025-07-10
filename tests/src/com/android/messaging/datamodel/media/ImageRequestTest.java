@@ -28,7 +28,7 @@ import com.android.messaging.datamodel.MemoryCacheManager;
 import com.android.messaging.util.ImageUtils;
 
 import org.mockito.ArgumentCaptor;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 
@@ -62,8 +62,8 @@ public class ImageRequestTest extends BugleTestCase {
                     ArgumentCaptor.forClass(BitmapFactory.Options.class);
             Mockito.verify(spyImageUtils).calculateInSampleSize(
                     options.capture(),
-                    Matchers.eq(ImageRequest.UNSPECIFIED_SIZE),
-                    Matchers.eq(ImageRequest.UNSPECIFIED_SIZE));
+                    ArgumentMatchers.eq(ImageRequest.UNSPECIFIED_SIZE),
+                    ArgumentMatchers.eq(ImageRequest.UNSPECIFIED_SIZE));
             assertEquals(1, options.getValue().inSampleSize);
             assertNotNull(imageResource);
             assertNotNull(imageResource.getBitmap());
@@ -93,7 +93,7 @@ public class ImageRequestTest extends BugleTestCase {
                     ArgumentCaptor.forClass(BitmapFactory.Options.class);
             Mockito.verify(spyImageUtils).calculateInSampleSize(
                     options.capture(),
-                    Matchers.eq(DOWNSAMPLE_IMAGE_SIZE), Matchers.eq(DOWNSAMPLE_IMAGE_SIZE));
+                    ArgumentMatchers.eq(DOWNSAMPLE_IMAGE_SIZE), ArgumentMatchers.eq(DOWNSAMPLE_IMAGE_SIZE));
             assertNotSame(1, options.getValue().inSampleSize);
             assertNotNull(imageResource);
             assertNotNull(imageResource.getBitmap());

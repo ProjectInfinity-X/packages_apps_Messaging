@@ -40,7 +40,7 @@ import com.android.messaging.ui.conversationlist.ConversationListFragment;
 import com.android.messaging.util.BugleGservices;
 import com.android.messaging.util.ImeUtil;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -84,9 +84,9 @@ public class ConversationFragmentTest extends FragmentTestCase<ConversationFragm
      * @param cursor
      */
     private void loadWith(final Cursor cursor) {
-        Mockito.when(mockDraftMessageData.isBound(Matchers.anyString()))
+        Mockito.when(mockDraftMessageData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
-        Mockito.when(mockConversationData.isBound(Matchers.anyString()))
+        Mockito.when(mockConversationData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
         Mockito.doReturn(mockDraftMessageData)
             .when(mockDataModel)
@@ -95,9 +95,9 @@ public class ConversationFragmentTest extends FragmentTestCase<ConversationFragm
             .when(mockDataModel)
             .createDraftMessageData(null);
         Mockito.when(mockDataModel.createConversationData(
-                Matchers.any(Activity.class),
-                Matchers.any(ConversationDataListener.class),
-                Matchers.anyString()))
+                ArgumentMatchers.any(Activity.class),
+                ArgumentMatchers.any(ConversationDataListener.class),
+                ArgumentMatchers.anyString()))
             .thenReturn(mockConversationData);
 
         // Create fragment synchronously to avoid need for volatile, synchronization etc.

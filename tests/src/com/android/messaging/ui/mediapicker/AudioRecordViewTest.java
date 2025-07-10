@@ -26,7 +26,7 @@ import com.android.messaging.datamodel.data.MessagePartData;
 import com.android.messaging.ui.ViewTest;
 import com.android.messaging.util.FakeMediaUtil;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -44,7 +44,7 @@ public class AudioRecordViewTest extends ViewTest<AudioRecordView> {
     }
 
     private void verifyAudioSubmitted() {
-        Mockito.verify(mockHost).onAudioRecorded(Matchers.any(MessagePartData.class));
+        Mockito.verify(mockHost).onAudioRecorded(ArgumentMatchers.any(MessagePartData.class));
     }
 
     private AudioRecordView initView() {
@@ -56,13 +56,13 @@ public class AudioRecordViewTest extends ViewTest<AudioRecordView> {
 
     public void testRecording() {
         Mockito.when(mockRecorder.isRecording()).thenReturn(false);
-        Mockito.when(mockRecorder.startRecording(Matchers.<OnErrorListener>any(),
-                Matchers.<OnInfoListener>any(), Matchers.anyInt())).thenReturn(true);
+        Mockito.when(mockRecorder.startRecording(ArgumentMatchers.<OnErrorListener>any(),
+                ArgumentMatchers.<OnInfoListener>any(), ArgumentMatchers.anyInt())).thenReturn(true);
         Mockito.when(mockRecorder.stopRecording()).thenReturn(Uri.parse("content://someaudio/2"));
         final AudioRecordView view = initView();
         view.onRecordButtonTouchDown();
-        Mockito.verify(mockRecorder).startRecording(Matchers.<OnErrorListener>any(),
-                Matchers.<OnInfoListener>any(), Matchers.anyInt());
+        Mockito.verify(mockRecorder).startRecording(ArgumentMatchers.<OnErrorListener>any(),
+                ArgumentMatchers.<OnInfoListener>any(), ArgumentMatchers.anyInt());
         Mockito.when(mockRecorder.isRecording()).thenReturn(true);
         // Record for 1 second to make it meaningful.
         sleepNoThrow(1000);

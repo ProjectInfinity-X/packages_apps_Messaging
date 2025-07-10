@@ -32,6 +32,7 @@ messaging_java_defaults {
     soong_config_variables: {
         build_variant_eng: {
             optimize: {
+                keep_runtime_invisible_annotations: true,
                 proguard_flags_files: [
                     "proguard.flags",
                     "proguard-test.flags",
@@ -39,6 +40,7 @@ messaging_java_defaults {
             },
             conditions_default: {
                 optimize: {
+                    keep_runtime_invisible_annotations: true,
                     proguard_flags_files: [
                         "proguard.flags",
                         "proguard-release.flags",

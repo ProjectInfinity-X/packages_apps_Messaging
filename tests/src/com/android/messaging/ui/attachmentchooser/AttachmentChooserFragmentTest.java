@@ -34,7 +34,7 @@ import com.android.messaging.ui.attachmentchooser.AttachmentChooserFragment.Atta
 import com.android.messaging.ui.conversationlist.ConversationListFragment;
 
 import org.mockito.ArgumentMatcher;
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -85,7 +85,7 @@ public class AttachmentChooserFragmentTest extends FragmentTestCase<AttachmentCh
     }
 
     private void loadWith(final List<MessagePartData> attachments) {
-        Mockito.when(mockDraftMessageData.isBound(Matchers.anyString()))
+        Mockito.when(mockDraftMessageData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
         Mockito.doReturn(mockDraftMessageData)
             .when(mockDataModel)
@@ -94,7 +94,7 @@ public class AttachmentChooserFragmentTest extends FragmentTestCase<AttachmentCh
             .when(mockDraftMessageData)
             .getReadOnlyAttachments();
         Mockito.when(mockDataModel.createDraftMessageData(
-                Matchers.anyString()))
+                ArgumentMatchers.anyString()))
             .thenReturn(mockDraftMessageData);
 
         // Create fragment synchronously to avoid need for volatile, synchronization etc.
@@ -118,8 +118,8 @@ public class AttachmentChooserFragmentTest extends FragmentTestCase<AttachmentCh
                 Mockito.verify(mockDataModel).createDraftMessageData(
                         Mockito.matches(CONVERSATION_ID));
                 Mockito.verify(mockDraftMessageData).loadFromStorage(
-                        Matchers.eq(fragment.mBinding), Matchers.eq((MessageData) null),
-                        Matchers.eq(false));
+                        ArgumentMatchers.eq(fragment.mBinding), ArgumentMatchers.eq((MessageData) null),
+                        ArgumentMatchers.eq(false));
             }
         });
         // Now load the cursor
@@ -158,9 +158,9 @@ public class AttachmentChooserFragmentTest extends FragmentTestCase<AttachmentCh
         getFragment().confirmSelection();
         final MessagePartData[] attachmentsToRemove = new MessagePartData[] {
                 itemView.mAttachmentData, itemView2.mAttachmentData };
-        Mockito.verify(mockDraftMessageData).removeExistingAttachments(Matchers.argThat(
+        Mockito.verify(mockDraftMessageData).removeExistingAttachments(ArgumentMatchers.argThat(
                 new IsSetOfGivenAttachments(new HashSet<>(Arrays.asList(attachmentsToRemove)))));
-        Mockito.verify(mockDraftMessageData).saveToStorage(Matchers.eq(getFragment().mBinding));
+        Mockito.verify(mockDraftMessageData).saveToStorage(ArgumentMatchers.eq(getFragment().mBinding));
         Mockito.verify(mockHost).onConfirmSelection();
     }
 }

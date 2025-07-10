@@ -40,7 +40,7 @@ import com.android.messaging.util.MediaUtil;
 import com.android.messaging.util.OsUtil;
 import com.android.messaging.util.PhoneUtils;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
@@ -86,7 +86,7 @@ public class FakeFactory extends Factory {
 
         ApnDatabase.initializeAppContext(context);
 
-        Mockito.when(factory.mPhoneUtils.getCanonicalBySystemLocale(Matchers.anyString()))
+        Mockito.when(factory.mPhoneUtils.getCanonicalBySystemLocale(ArgumentMatchers.anyString()))
                 .thenAnswer(new Answer<String>() {
                         @Override
                         public String answer(final InvocationOnMock invocation) throws Throwable {
@@ -95,7 +95,7 @@ public class FakeFactory extends Factory {
                         }
                     }
                 );
-        Mockito.when(factory.mPhoneUtils.getCanonicalBySimLocale(Matchers.anyString())).thenAnswer(
+        Mockito.when(factory.mPhoneUtils.getCanonicalBySimLocale(ArgumentMatchers.anyString())).thenAnswer(
                 new Answer<String>() {
                     @Override
                     public String answer(final InvocationOnMock invocation) throws Throwable {
@@ -104,7 +104,7 @@ public class FakeFactory extends Factory {
                     }
                 }
         );
-        Mockito.when(factory.mPhoneUtils.formatForDisplay(Matchers.anyString())).thenAnswer(
+        Mockito.when(factory.mPhoneUtils.formatForDisplay(ArgumentMatchers.anyString())).thenAnswer(
                 new Answer<String>() {
                     @Override
                     public String answer(final InvocationOnMock invocation) throws Throwable {

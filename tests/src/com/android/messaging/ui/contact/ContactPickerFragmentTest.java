@@ -38,7 +38,7 @@ import com.android.messaging.ui.FragmentTestCase;
 import com.android.messaging.ui.UIIntents;
 import com.android.messaging.ui.contact.ContactPickerFragment.ContactPickerFragmentHost;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -79,7 +79,7 @@ public class ContactPickerFragmentTest
      * Helper method to initialize the ContactPickerFragment and its data.
      */
     private ContactPickerFragmentTest initFragment(final int initialMode) {
-        Mockito.when(mMockContactPickerData.isBound(Matchers.anyString()))
+        Mockito.when(mMockContactPickerData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
 
         getActivity().runOnUiThread(new Runnable() {
@@ -103,7 +103,7 @@ public class ContactPickerFragmentTest
      * fragment.
      */
     private ContactPickerFragmentTest loadWithAllContactsCursor(final Cursor cursor) {
-        Mockito.when(mMockContactPickerData.isBound(Matchers.anyString()))
+        Mockito.when(mMockContactPickerData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
 
         getActivity().runOnUiThread(new Runnable() {
@@ -121,7 +121,7 @@ public class ContactPickerFragmentTest
      * fragment.
      */
     private ContactPickerFragmentTest loadWithFrequentContactsCursor(final Cursor cursor) {
-        Mockito.when(mMockContactPickerData.isBound(Matchers.anyString()))
+        Mockito.when(mMockContactPickerData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
         getActivity().runOnUiThread(new Runnable() {
             @Override

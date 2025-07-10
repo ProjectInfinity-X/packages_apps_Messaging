@@ -33,7 +33,7 @@ import com.android.messaging.ui.FragmentTestCase;
 import com.android.messaging.ui.UIIntents;
 import com.android.messaging.ui.conversationlist.ConversationListFragment.ConversationListFragmentHost;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -71,7 +71,7 @@ public class ConversationListFragmentTest
      * @param cursor
      */
     private void loadWith(final Cursor cursor) {
-        Mockito.when(mMockConversationListData.isBound(Matchers.anyString()))
+        Mockito.when(mMockConversationListData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
 
         final ConversationListFragment fragment = getFragment();

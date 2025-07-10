@@ -30,7 +30,7 @@ import com.android.messaging.datamodel.data.DraftMessageData;
 import com.android.messaging.datamodel.data.MediaPickerData;
 import com.android.messaging.ui.FragmentTestCase;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
@@ -66,9 +66,9 @@ public class MediaPickerTest extends FragmentTestCase<MediaPicker> {
      */
     private void initFragment(final int supportedMediaTypes, final Integer[] expectedLoaderIds,
             final boolean filterTabBeforeAttach) {
-        Mockito.when(mMockMediaPickerData.isBound(Matchers.anyString()))
+        Mockito.when(mMockMediaPickerData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
-        Mockito.when(mMockDraftMessageData.isBound(Matchers.anyString()))
+        Mockito.when(mMockDraftMessageData.isBound(ArgumentMatchers.anyString()))
             .thenReturn(true);
         final Binding<DraftMessageData> draftBinding = BindingBase.createBinding(this);
         draftBinding.bind(mMockDraftMessageData);
@@ -87,7 +87,7 @@ public class MediaPickerTest extends FragmentTestCase<MediaPicker> {
                 fragment.setDraftMessageDataModel(draftBinding);
                 Mockito.verify(mMockMediaPickerData,
                         Mockito.atLeastOnce()).init(
-                        Matchers.eq(fragment.getLoaderManager()));
+                        ArgumentMatchers.eq(fragment.getLoaderManager()));
                 fragment.open(MediaPicker.MEDIA_TYPE_ALL, false);
             }
         });

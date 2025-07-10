@@ -43,7 +43,7 @@ import com.android.messaging.util.BugleGservices;
 import com.android.messaging.util.FakeMediaUtil;
 import com.android.messaging.util.ImeUtil;
 
-import org.mockito.Matchers;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
@@ -104,11 +104,11 @@ public class ComposeMessageViewTest extends ViewTest<ComposeMessageView> {
         final MessageData message = MessageData.createDraftSmsMessage("fake_id", "just_a_self_id",
                 "Sample Message");
 
-        Mockito.when(mockDraftMessageData.isBound(Matchers.anyString()))
+        Mockito.when(mockDraftMessageData.isBound(ArgumentMatchers.anyString()))
                 .thenReturn(true);
         Mockito.when(mockDraftMessageData.getMessageText()).thenReturn(message.getMessageText());
         Mockito.when(mockDraftMessageData.prepareMessageForSending(
-                Matchers.<BindingBase<DraftMessageData>>any()))
+                ArgumentMatchers.<BindingBase<DraftMessageData>>any()))
                 .thenReturn(message);
         Mockito.when(mockDraftMessageData.hasPendingAttachments()).thenReturn(false);
         Mockito.doAnswer(new Answer() {
@@ -155,11 +155,11 @@ public class ComposeMessageViewTest extends ViewTest<ComposeMessageView> {
         final MessageData message = MessageData.createDraftSmsMessage("fake_id", "just_a_self_id",
                 "Sample Message");
 
-        Mockito.when(mockDraftMessageData.isBound(Matchers.anyString()))
+        Mockito.when(mockDraftMessageData.isBound(ArgumentMatchers.anyString()))
                 .thenReturn(true);
         Mockito.when(mockDraftMessageData.getMessageText()).thenReturn(message.getMessageText());
         Mockito.when(mockDraftMessageData.prepareMessageForSending(
-                Matchers.<BindingBase<DraftMessageData>>any()))
+                ArgumentMatchers.<BindingBase<DraftMessageData>>any()))
                 .thenReturn(message);
         Mockito.when(mockDraftMessageData.hasPendingAttachments()).thenReturn(false);
 
