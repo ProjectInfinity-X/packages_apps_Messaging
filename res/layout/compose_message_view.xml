@@ -21,32 +21,30 @@
     android:id="@+id/message_compose_view_container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/m3_surface"
     android:orientation="vertical" >
 
-    <!-- Note it may seem off to have the layout_weight="1" on the compose bar and attachment view
-     when it's the media picker that expands, but this is correct because weight also works when
-     there's not enough space.  Any views with positive weights will be shrunk to make space.
-     When the media picker goes full screen, it fills the parent, leaving no room for the compose
-     bar -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp"
         android:orientation="vertical">
 
         <View
             android:id="@+id/top_margin"
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="2dp" />
 
         <include layout="@layout/attachment_preview"
             android:id="@+id/attachment_draft_view"
             style="@style/ComposeMessageViewDraftViewStyle"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="6dp"
             android:layout_weight="1"
             android:visibility="gone" />
 
@@ -67,18 +65,22 @@
                 android:id="@+id/compose_subject_text"
                 style="@style/ConversationComposeSubjectText"
                 android:hint="@string/compose_message_view_subject_hint_text"
+                android:textColorHint="@color/compose_send_text_hint_color"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:imeOptions="flagNoExtractUi" />
 
             <ImageButton
                 android:id="@+id/delete_subject_button"
-                style="@style/AttachmentPreviewCloseButtonStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:src="@drawable/ic_remove_light"
-                android:translationY="@dimen/compose_message_subject_cancel_top_offset"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="6dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_m3_remove_badge"
                 android:contentDescription="@string/delete_subject_content_description" />
 
         </RelativeLayout>
@@ -87,6 +89,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="bottom"
             android:orientation="horizontal">
 
             <!-- Contains compose message bubble and character counter for SMS or attachments size
@@ -102,19 +105,19 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
                     <ImageButton
                         android:id="@+id/attach_media_button"
-                        style="@style/ComposeMessageViewAttachMediaButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_attachment_dark"
-                        android:minHeight="48dp"
-                        android:minWidth="48dp"
-                        android:paddingTop="@dimen/compose_message_attachment_padding_topBottom"
-                        android:paddingBottom="@dimen/compose_message_attachment_padding_topBottom"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/attach_button_background"
+                        android:src="@drawable/ic_m3_attach"
+                        android:scaleType="center"
                         android:contentDescription="@string/attachMediaButtonContentDescription" />
 
                     <com.android.messaging.ui.PlainTextEditText
@@ -123,8 +126,12 @@
                         android:layout_height="wrap_content"
                         android:layout_width="0dp"
                         android:layout_weight="1"
-                        android:layout_gravity="center"
+                        android:layout_gravity="center_vertical"
+                        android:minHeight="44dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
                         android:background="@drawable/msg_bubble_input_rounded"
+                        android:textColorHint="@color/compose_send_text_hint_color"
                         android:hint="@string/compose_message_view_hint_text"
                         android:imeOptions="actionSend|flagNoEnterAction|flagNoExtractUi" />
 
@@ -152,18 +159,19 @@
                     android:layout_gravity="top" >
                     <com.android.messaging.ui.conversation.SimIconView
                         android:id="@+id/self_send_icon"
-                        android:layout_width="@dimen/conversation_message_contact_icon_size"
-                        android:layout_height="@dimen/conversation_message_contact_icon_size"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
                         android:importantForAccessibility="no"
                         app:iconSize="normal"
                         app:reveal="true"
                         android:clickable="true" />
                     <ImageButton
                         android:id="@+id/send_message_button"
-                        android:layout_width="@dimen/conversation_message_contact_icon_size"
-                        android:layout_height="@dimen/conversation_message_contact_icon_size"
-                        android:src="@drawable/ic_send_light"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_m3_send"
                         android:background="@drawable/send_arrow_background"
+                        android:scaleType="center"
                         android:contentDescription="@string/sendButtonContentDescription"
                         android:visibility="gone" />
                 </FrameLayout>

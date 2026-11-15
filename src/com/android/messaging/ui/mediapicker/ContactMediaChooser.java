@@ -54,7 +54,7 @@ class ContactMediaChooser extends MediaChooser {
 
     @Override
     public int getIconResource() {
-        return R.drawable.ic_person_light;
+        return R.drawable.ic_m3_person;
     }
 
     @Override

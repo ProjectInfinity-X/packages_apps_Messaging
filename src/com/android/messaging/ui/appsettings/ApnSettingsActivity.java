@@ -50,6 +50,7 @@ import com.android.messaging.sms.BugleApnSettingsLoader;
 import com.android.messaging.ui.BugleActionBarActivity;
 import com.android.messaging.ui.UIIntents;
 import com.android.messaging.util.OsUtil;
+import com.android.messaging.util.UiUtils;
 import com.android.messaging.util.PhoneUtils;
 
 public class ApnSettingsActivity extends BugleActionBarActivity {
@@ -165,6 +166,7 @@ public class ApnSettingsActivity extends BugleActionBarActivity {
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
 
+            UiUtils.stylePreferenceListView(getView());
             final ListView lv = (ListView) getView().findViewById(android.R.id.list);
             TextView empty = (TextView) getView().findViewById(android.R.id.empty);
             if (empty != null) {
@@ -274,7 +276,7 @@ public class ApnSettingsActivity extends BugleActionBarActivity {
             if (!mUnavailable) {
                 menu.add(0, MENU_NEW, 0,
                         getResources().getString(R.string.menu_new_apn))
-                        .setIcon(R.drawable.ic_add_white)
+                        .setIcon(R.drawable.ic_add)
                         .setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
                 menu.add(0, MENU_RESTORE, 0,
                         getResources().getString(R.string.menu_restore_default_apn))

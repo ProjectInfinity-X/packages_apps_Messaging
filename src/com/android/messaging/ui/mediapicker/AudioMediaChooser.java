@@ -45,7 +45,7 @@ class AudioMediaChooser extends MediaChooser implements
 
     @Override
     public int getIconResource() {
-        return R.drawable.ic_audio_light;
+        return R.drawable.ic_m3_mic;
     }
 
     @Override

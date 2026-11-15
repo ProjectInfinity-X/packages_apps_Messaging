@@ -67,7 +67,7 @@ public class ShareIntentFragment extends DialogFragment implements ConversationL
         final LayoutInflater inflater = activity.getLayoutInflater();
         View view = inflater.inflate(R.layout.share_intent_conversation_list_view, null);
         mEmptyListMessageView = (ListEmptyView) view.findViewById(R.id.no_conversations_view);
-        mEmptyListMessageView.setImageHint(R.drawable.ic_oobe_conv_list);
+        mEmptyListMessageView.setImageHint(R.drawable.ic_m3_empty_messages);
         // The default behavior for default layout param generation by LinearLayoutManager is to
         // provide width and height of WRAP_CONTENT, but this is not desirable for
         // ShareIntentFragment; the view in each row should be a width of MATCH_PARENT so that

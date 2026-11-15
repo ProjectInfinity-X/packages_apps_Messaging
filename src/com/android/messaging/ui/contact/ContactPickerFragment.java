@@ -175,13 +175,13 @@ public class ContactPickerFragment extends Fragment implements ContactPickerData
         mCustomHeaderViewPager.setViewHolders(viewHolders);
         mCustomHeaderViewPager.setViewPagerTabHeight(CustomHeaderViewPager.DEFAULT_TAB_STRIP_SIZE);
         mCustomHeaderViewPager.setBackgroundColor(getResources()
-                .getColor(R.color.contact_picker_background));
+                .getColor(R.color.m3_card_canvas));
 
         // The view pager defaults to the frequent contacts page.
         mCustomHeaderViewPager.setCurrentItem(0);
 
         mToolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        mToolbar.setNavigationIcon(R.drawable.ic_arrow_back_light);
+        mToolbar.setNavigationIcon(R.drawable.ic_m3_back);
         mToolbar.setNavigationContentDescription(R.string.back);
         mToolbar.setNavigationOnClickListener(new OnClickListener() {
             @Override
@@ -234,10 +234,10 @@ public class ContactPickerFragment extends Fragment implements ContactPickerData
                 if ((mRecipientTextView.getInputType() & InputType.TYPE_CLASS_PHONE) !=
                         InputType.TYPE_CLASS_PHONE) {
                     mRecipientTextView.setInputType(baseInputType | InputType.TYPE_CLASS_PHONE);
-                    menuItem.setIcon(R.drawable.ic_ime_light);
+                    menuItem.setIcon(R.drawable.ic_m3_keyboard);
                 } else {
                     mRecipientTextView.setInputType(baseInputType | InputType.TYPE_CLASS_TEXT);
-                    menuItem.setIcon(R.drawable.ic_numeric_dialpad);
+                    menuItem.setIcon(R.drawable.ic_m3_dialpad);
                 }
                 ImeUtil.get().showImeKeyboard(getActivity(), mRecipientTextView);
                 return true;

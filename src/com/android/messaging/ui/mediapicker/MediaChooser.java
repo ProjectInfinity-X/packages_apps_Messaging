@@ -19,6 +19,7 @@ package com.android.messaging.ui.mediapicker;
 import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import androidx.appcompat.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -77,7 +78,11 @@ abstract class MediaChooser extends BasePagerViewHolder
         }
         if (mTabButton != null) {
             mTabButton.setSelected(selected);
-            mTabButton.setAlpha(selected ? 1 : 0.5f);
+            mTabButton.setAlpha(selected ? 1.0f : 0.8f);
+            mTabButton.setColorFilter(
+                    mTabButton.getContext().getResources().getColor(
+                            selected ? R.color.m3_primary : R.color.m3_on_surface_variant),
+                    PorterDuff.Mode.SRC_IN);
         }
     }
 
@@ -145,7 +150,7 @@ abstract class MediaChooser extends BasePagerViewHolder
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.show();
             // Use X instead of <- in the action bar
-            actionBar.setHomeAsUpIndicator(R.drawable.ic_remove_small_light);
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_m3_close);
             actionBar.setTitle(actionBarTitleResId);
         }
     }

@@ -42,6 +42,7 @@ import com.android.messaging.sms.BugleApnSettingsLoader;
 import com.android.messaging.ui.BugleActionBarActivity;
 import com.android.messaging.ui.UIIntents;
 import com.android.messaging.util.PhoneUtils;
+import com.android.messaging.util.UiUtils;
 
 public class ApnEditorActivity extends BugleActionBarActivity {
     private static final int ERROR_DIALOG_ID = 0;
@@ -179,6 +180,7 @@ public class ApnEditorActivity extends BugleActionBarActivity {
             super.onActivityCreated(savedInstanceState);
 
             addPreferencesFromResource(R.xml.apn_editor);
+            UiUtils.stylePreferenceListView(getView());
 
             setHasOptionsMenu(true);
 
@@ -301,7 +303,7 @@ public class ApnEditorActivity extends BugleActionBarActivity {
             // If it's a new APN, then cancel will delete the new entry in onPause
             if (!mNewApn) {
                 menu.add(0, MENU_DELETE, 0, R.string.menu_delete_apn)
-                    .setIcon(R.drawable.ic_delete_small_dark);
+                    .setIcon(R.drawable.ic_m3_delete);
             }
             menu.add(0, MENU_SAVE, 0, R.string.menu_save_apn)
                 .setIcon(android.R.drawable.ic_menu_save);

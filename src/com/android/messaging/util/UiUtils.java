@@ -26,6 +26,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.ColorUtils;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import android.text.Html;
@@ -42,6 +43,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.Interpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.RemoteViews;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.messaging.Factory;
@@ -261,15 +263,21 @@ public class UiUtils {
     }
 
     public static void setStatusBarColor(final Activity activity, final int color) {
+        if (activity == null) {
+            return;
+        }
         if (OsUtil.isAtLeastL()) {
-            // To achieve the appearance of an 80% opacity blend against a black background,
-            // each color channel is reduced in value by 20%.
-            final int blendedRed = (int) Math.floor(0.8 * Color.red(color));
-            final int blendedGreen = (int) Math.floor(0.8 * Color.green(color));
-            final int blendedBlue = (int) Math.floor(0.8 * Color.blue(color));
-
-            activity.getWindow().setStatusBarColor(
-                    Color.rgb(blendedRed, blendedGreen, blendedBlue));
+            activity.getWindow().setStatusBarColor(color);
+            if (OsUtil.isAtLeastM()) {
+                final View decorView = activity.getWindow().getDecorView();
+                int flags = decorView.getSystemUiVisibility();
+                if (ColorUtils.calculateLuminance(color) > 0.5) {
+                    flags |= View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                } else {
+                    flags &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
+                }
+                decorView.setSystemUiVisibility(flags);
+            }
         }
     }
 
@@ -442,5 +450,23 @@ public class UiUtils {
 
     public static RemoteViews getWidgetMissingPermissionView(final Context context) {
         return new RemoteViews(context.getPackageName(), R.layout.widget_missing_permission);
+    }
+
+    public static void stylePreferenceListView(final View rootView) {
+        if (rootView == null) {
+            return;
+        }
+        final View list = rootView.findViewById(android.R.id.list);
+        if (list instanceof ListView) {
+            final ListView listView = (ListView) list;
+            final Context context = listView.getContext();
+            final float density = context.getResources().getDisplayMetrics().density;
+            listView.setDivider(null);
+            listView.setDividerHeight(0);
+            listView.setClipToPadding(false);
+            listView.setPadding(0, (int) (12 * density), 0, (int) (24 * density));
+            listView.setBackgroundColor(
+                    context.getResources().getColor(R.color.m3_card_canvas));
+        }
     }
 }

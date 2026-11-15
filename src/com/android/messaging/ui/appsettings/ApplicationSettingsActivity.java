@@ -37,6 +37,7 @@ import com.android.messaging.ui.UIIntents;
 import com.android.messaging.util.BuglePrefs;
 import com.android.messaging.util.DebugUtils;
 import com.android.messaging.util.OsUtil;
+import com.android.messaging.util.UiUtils;
 import com.android.messaging.util.PhoneUtils;
 
 public class ApplicationSettingsActivity extends BugleActionBarActivity {
@@ -133,6 +134,12 @@ public class ApplicationSettingsActivity extends BugleActionBarActivity {
                 // the parent SettingsActivity.
                 getPreferenceScreen().removePreference(advancedScreen);
             }
+        }
+
+        @Override
+        public void onActivityCreated(final Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            UiUtils.stylePreferenceListView(getView());
         }
 
         @Override

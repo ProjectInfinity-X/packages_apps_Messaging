@@ -26,6 +26,7 @@ import com.android.messaging.R;
 import com.android.messaging.ui.UIIntents;
 import com.android.messaging.util.DebugUtils;
 import com.android.messaging.util.Trace;
+import com.android.messaging.util.UiUtils;
 
 public class ConversationListActivity extends AbstractConversationListActivity {
     @Override
@@ -44,8 +45,9 @@ public class ConversationListActivity extends AbstractConversationListActivity {
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
-        actionBar.setBackgroundDrawable(new ColorDrawable(
-                getResources().getColor(R.color.action_bar_background_color)));
+        final int actionBarColor = getResources().getColor(R.color.action_bar_background_color);
+        actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
+        UiUtils.setStatusBarColor(this, actionBarColor);
         actionBar.show();
         super.updateActionBar(actionBar);
     }

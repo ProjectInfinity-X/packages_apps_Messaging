@@ -1,0 +1,13 @@
+-source
+11
+-target
+11
+-Xmaxerrs
+500
+-cp
+/tmp/hecker-suite-sdk-check/android.jar:/tmp/hecker-suite-sdk-check/appcompat.jar:/tmp/hecker-suite-sdk-check/core.jar:/tmp/msg_verify2/libs/recyclerview.jar:/tmp/msg_verify2/classes
+-sourcepath
+src
+-d
+/tmp/msg_verify2/classes
+src/com/android/messaging/ui/BugleActionBarActivity.java

@@ -19,13 +19,15 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_vertical">
+    android:layout_gravity="center"
+    android:padding="24dp">
 
     <ImageView
         android:id="@+id/empty_image_hint"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="112dp"
+        android:layout_height="112dp"
         android:layout_gravity="center"
+        android:scaleType="fitCenter"
         android:importantForAccessibility="no"
         android:contentDescription="@null"/>
 
@@ -35,8 +37,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/list_empty_text_left_right_margin"
-        android:layout_marginRight="@dimen/list_empty_text_left_right_margin"
-        android:layout_marginTop="@dimen/list_empty_text_top_margin"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="20dp"
+        android:lineSpacingExtra="4dp"
         style="@style/ListEmptyText"/>
 </com.android.messaging.ui.ListEmptyView>

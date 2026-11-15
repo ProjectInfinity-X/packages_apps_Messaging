@@ -450,8 +450,11 @@ public class ConversationMessageView extends FrameLayout implements View.OnClick
                     R.string.incoming_sim_name_text, subscriptionEntry.displayName) :
                         subscriptionEntry.displayName;
             mSimNameView.setText(simNameText);
-            mSimNameView.setTextColor(showSimIconAsIncoming ? getResources().getColor(
-                    R.color.timestamp_text_incoming) : subscriptionEntry.displayColor);
+            mSimNameView.setTextColor(!shouldShowMessageTextBubble()
+                    ? getResources().getColor(R.color.timestamp_text_on_surface)
+                    : (showSimIconAsIncoming
+                            ? getResources().getColor(R.color.timestamp_text_incoming)
+                            : subscriptionEntry.displayColor));
             mSimNameView.setVisibility(VISIBLE);
         } else {
             mSimNameView.setText(null);
@@ -906,7 +909,7 @@ public class ConversationMessageView extends FrameLayout implements View.OnClick
         int timestampColorResId;
         int subjectLabelColorResId;
         if (isSelected()) {
-            messageColorResId = R.color.message_text_color_incoming;
+            messageColorResId = R.color.message_text_color_selected;
             statusColorResId = R.color.message_action_status_text;
             infoColorResId = R.color.message_action_info_text;
             if (shouldShowMessageTextBubble()) {
@@ -915,8 +918,8 @@ public class ConversationMessageView extends FrameLayout implements View.OnClick
             } else {
                 // If there's no text, the timestamp will be shown below the attachments,
                 // against the conversation view background.
-                timestampColorResId = R.color.timestamp_text_outgoing;
-                subjectLabelColorResId = R.color.timestamp_text_outgoing;
+                timestampColorResId = R.color.timestamp_text_on_surface;
+                subjectLabelColorResId = R.color.timestamp_text_on_surface;
             }
         } else {
             messageColorResId = (mData.getIsIncoming() ?
@@ -978,9 +981,9 @@ public class ConversationMessageView extends FrameLayout implements View.OnClick
         if (infoColorResId >= 0) {
             mMmsInfoTextView.setTextColor(getResources().getColor(infoColorResId));
         }
-        if (timestampColorResId == R.color.timestamp_text_incoming &&
-                mData.hasAttachments() && !shouldShowMessageTextBubble()) {
-            timestampColorResId = R.color.timestamp_text_outgoing;
+        if (!shouldShowMessageTextBubble() && mData.hasAttachments()
+                && timestampColorResId != R.color.message_failed_timestamp_text) {
+            timestampColorResId = R.color.timestamp_text_on_surface;
         }
         mStatusTextView.setTextColor(getResources().getColor(timestampColorResId));
 
@@ -1143,8 +1146,8 @@ public class ConversationMessageView extends FrameLayout implements View.OnClick
             final int nameTextColorRes;
             final int detailsTextColorRes;
             if (isSelected()) {
-                nameTextColorRes = R.color.message_text_color_incoming;
-                detailsTextColorRes = R.color.message_text_color_incoming;
+                nameTextColorRes = R.color.message_text_color_selected;
+                detailsTextColorRes = R.color.message_action_timestamp_text;
             } else {
                 nameTextColorRes = mData.getIsIncoming() ? R.color.message_text_color_incoming
                         : R.color.message_text_color_outgoing;

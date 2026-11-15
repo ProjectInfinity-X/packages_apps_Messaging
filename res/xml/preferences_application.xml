@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Copyright (C) 2015 The Android Open Source Project
-    Copyright 2021 The exTHmUI Open Source Project
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-         http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
-<!-- Preference screen definition for Bugle's application-wide settings -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!--  KLP+ only -->
     <PreferenceScreen
         android:key="@string/sms_disabled_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_sms"
         android:title="@string/sms_disabled_pref_title"
         android:persistent="false">
         <intent
@@ -30,6 +14,8 @@
     </PreferenceScreen>
     <PreferenceScreen
         android:key="@string/sms_enabled_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_sms"
         android:title="@string/sms_enabled_pref_title"
         android:persistent="false">
         <intent
@@ -39,17 +25,23 @@
 
     <CheckBoxPreference
         android:key="@string/send_sound_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_sound"
         android:title="@string/send_sound_pref_title"
         android:defaultValue="@bool/send_sound_pref_default"
         android:persistent="true" />
 
     <Preference
         android:key="@string/notifications_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_notifications"
         android:title="@string/notifications_pref_title"
         android:persistent="true" />
 
     <SwitchPreference
         android:key="@string/swipe_right_deletes_conversation_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_swipe"
         android:title="@string/swipe_to_delete_conversation_pref_title"
         android:summary="@string/swipe_to_delete_conversation_pref_summary"
         android:defaultValue="false"
@@ -57,12 +49,16 @@
 
     <SwitchPreference
         android:key="@string/show_quick_reply_templates_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_reply"
         android:title="@string/show_quick_reply_templates_title"
         android:summary="@string/show_quick_reply_templates_summary"
         android:defaultValue="@bool/show_quick_reply_templates_pref_default" />
 
     <SwitchPreference
         android:key="@string/captcha_detector_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_shield"
         android:title="@string/captcha_enable_title"
         android:summary="@string/captcha_enable_summary"
         android:defaultValue="@bool/captcha_detector_default"
@@ -70,33 +66,44 @@
 
     <PreferenceScreen
         android:key="key_captcha_keywords_screen"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_shield"
         android:dependency="@string/captcha_detector_key"
         android:title="@string/captcha_keywords_title">
         <com.android.messaging.ui.appsettings.CaptchaKeywordsPreference
             android:key="@string/captcha_keywords_key"
+            android:layout="@layout/m3_preference_category_card"
             android:defaultValue="@string/captcha_keywords_default" />
         <Preference
             android:key="key_captcha_keywords_screen_fotter"
+            android:layout="@layout/m3_preference_card"
             android:summary="@string/captcha_keywords_footer"
             android:enabled="false" />
     </PreferenceScreen>
 
     <PreferenceScreen
-            android:key="@string/advanced_pref_key"
-            android:title="@string/advanced_settings" />
+        android:key="@string/advanced_pref_key"
+        android:layout="@layout/m3_preference_card"
+        android:icon="@drawable/ic_m3_pref_tune"
+        android:title="@string/advanced_settings" />
 
     <PreferenceCategory
         android:key="@string/debug_pref_key"
+        android:layout="@layout/m3_preference_category_card"
         android:title="@string/debug_category_pref_title">
 
         <CheckBoxPreference
             android:key="@string/dump_sms_pref_key"
+            android:layout="@layout/m3_preference_card"
+            android:icon="@drawable/ic_m3_pref_bug"
             android:title="@string/dump_sms_pref_title"
             android:summary="@string/dump_sms_pref_summary"
             android:defaultValue="@bool/dump_sms_pref_default" />
 
         <CheckBoxPreference
             android:key="@string/dump_mms_pref_key"
+            android:layout="@layout/m3_preference_card"
+            android:icon="@drawable/ic_m3_pref_bug"
             android:title="@string/dump_mms_pref_title"
             android:summary="@string/dump_mms_pref_summary"
             android:defaultValue="@bool/dump_mms_pref_default" />

@@ -18,14 +18,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@color/m3_card_canvas">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@android:id/list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/conversation_list_first_item_extra_padding"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="96dp"
         android:clipToPadding="false"
+        android:scrollbars="vertical"
         android:listSelector="?android:attr/listSelector"
         android:dividerHeight="0px" />
 
@@ -37,28 +40,38 @@
 
     <LinearLayout
         style="@style/ConversationListFragmentStartNewButtonStyle"
-        android:background="@drawable/fab_bg"
-        android:contentDescription="@string/start_new_conversation"
         android:id="@+id/start_new_conversation_button"
-        android:layout_gravity="bottom|right|center_vertical|center_horizontal|center|end"
+        android:layout_width="wrap_content"
         android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
         android:layout_marginBottom="@dimen/fab_bottom_margin"
-        android:layout_width="132dp">
+        android:background="@drawable/fab_bg"
+        android:clickable="true"
+        android:focusable="true"
+        android:elevation="@dimen/fab_elevation"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="20dp"
+        android:contentDescription="@string/start_new_conversation">
 
-	    <ImageView
-        	android:layout_gravity="center_vertical"
-	        android:layout_height="24dp"
-	        android:layout_marginStart="20dp"
-	        android:layout_width="24dp"
-	        android:src="@drawable/ic_add_white" />
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:importantForAccessibility="no"
+            android:src="@drawable/ic_m3_chat_add" />
 
-	    <TextView
-        	android:layout_gravity="center_vertical"
-	        android:layout_height="wrap_content"
-        	android:layout_marginStart="8dp"
-	        android:layout_width="wrap_content"
-        	android:text="Start chat"
-	        android:textColor="#fff" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="0.01"
+            android:text="@string/start_chat"
+            android:textColor="@color/fab_on_color"
+            android:textSize="14sp" />
     </LinearLayout>
 
 </FrameLayout>

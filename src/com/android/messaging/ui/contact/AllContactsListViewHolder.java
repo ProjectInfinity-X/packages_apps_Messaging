@@ -57,6 +57,6 @@ public class AllContactsListViewHolder extends CustomHeaderPagerListViewHolder {
 
     @Override
     protected int getEmptyViewImageResId() {
-        return R.drawable.ic_oobe_freq_list;
+        return R.drawable.ic_m3_empty_contacts;
     }
 }

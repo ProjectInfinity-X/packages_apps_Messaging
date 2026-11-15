@@ -15,8 +15,8 @@
     limitations under the License.
 -->
 <resources>
-    <style name="BugleBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:forceDarkAllowed">true</item>
+    <style name="BugleBaseTheme" parent="Theme.AppCompat.DayNight">
+        <item name="android:statusBarColor">@color/status_bar_color</item>
     </style>
 
     <style name="BugleTheme.ConversationActivity"
@@ -24,9 +24,13 @@
         <item name="android:colorEdgeEffect">@color/conversation_edge_effect</item>
     </style>
 
-    <style name="BugleTheme.DialogActivity" parent="@style/Theme.AppCompat.Light.Dialog">
+    <style name="BugleTheme.DialogActivity" parent="Theme.AppCompat.DayNight.Dialog">
         <item name="android:windowNoTitle">false</item>
-        <item name="android:background">@android:color/white</item>
+        <item name="android:windowBackground">@drawable/dialog_background</item>
+        <item name="colorPrimary">@color/m3_primary</item>
+        <item name="colorAccent">@color/m3_primary</item>
+        <item name="android:textColorPrimary">@color/m3_on_surface</item>
+        <item name="android:textColorSecondary">@color/m3_on_surface_variant</item>
     </style>
 
     <style name="ContactListItemDrawableIndicator">
@@ -34,6 +38,7 @@
     </style>
 
     <style name="ConversationActionBarTitleTextStyle" parent="BugleActionBarTitleTextStyle">
+      <item name="android:textSize">19sp</item>
       <item name="android:background">?android:attr/selectableItemBackgroundBorderless</item>
     </style>
 

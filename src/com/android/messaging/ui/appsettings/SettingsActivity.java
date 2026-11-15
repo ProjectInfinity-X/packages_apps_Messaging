@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -143,6 +144,13 @@ public class SettingsActivity extends BugleActionBarActivity {
                 final SettingsItem item = getItem(position);
                 final TextView titleTextView = (TextView) itemView.findViewById(R.id.title);
                 final TextView subtitleTextView = (TextView) itemView.findViewById(R.id.subtitle);
+                final ImageView iconView = (ImageView) itemView.findViewById(R.id.settings_icon);
+                if (iconView != null) {
+                    iconView.setImageResource(
+                            item.getType() == SettingsItem.TYPE_GENERAL_SETTINGS
+                                    ? R.drawable.ic_m3_pref_tune
+                                    : R.drawable.ic_m3_pref_sim);
+                }
                 final String summaryText = item.getDisplayDetail();
                 titleTextView.setText(item.getDisplayName());
                 if (!TextUtils.isEmpty(summaryText)) {

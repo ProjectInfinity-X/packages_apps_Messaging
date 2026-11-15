@@ -44,11 +44,11 @@ public class ViewPagerTabStrip extends LinearLayout {
         final Resources res = context.getResources();
 
         mSelectedUnderlineThickness =
-                res.getDimensionPixelSize(R.dimen.pager_tab_underline_selected);
+                (int) (3 * res.getDisplayMetrics().density);
         int underlineColor = res.getColor(R.color.contact_picker_tab_underline);
-        int backgroundColor = res.getColor(R.color.action_bar_background_color);
+        int backgroundColor = res.getColor(R.color.m3_card_canvas);
 
-        mSelectedUnderlinePaint = new Paint();
+        mSelectedUnderlinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mSelectedUnderlinePaint.setColor(underlineColor);
 
         setBackgroundColor(backgroundColor);
@@ -91,8 +91,11 @@ public class ViewPagerTabStrip extends LinearLayout {
             }
 
             int height = getHeight();
-            canvas.drawRect(selectedLeft, height - mSelectedUnderlineThickness,
-                    selectedRight, height, mSelectedUnderlinePaint);
+            int inset = (selectedRight - selectedLeft) / 4;
+            canvas.drawRoundRect(selectedLeft + inset, height - mSelectedUnderlineThickness,
+                    selectedRight - inset, height,
+                    mSelectedUnderlineThickness / 2f, mSelectedUnderlineThickness / 2f,
+                    mSelectedUnderlinePaint);
         }
     }
 

@@ -973,5 +973,8 @@
     <string name="work_directory_display_name">Work Profile contacts</string>
 
     <!-- When making a call to emergency numbers, show this toast -->
+    <string name="start_chat">Start chat</string>
+    <string name="permissions_welcome_title">Welcome to Messaging</string>
+
     <string name="disallow_emergency_call">Can\'t make a voice call to emergency services here.</string>
 </resources>

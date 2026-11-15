@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-FileCopyrightText: 2026 The LineageOS Project
+    SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Material 3 Dynamic System Tokens (Dark) -->
+    <color name="m3_primary">@android:color/system_primary_dark</color>
+    <color name="m3_on_primary">@android:color/system_on_primary_dark</color>
+    <color name="m3_primary_container">@android:color/system_primary_container_dark</color>
+    <color name="m3_on_primary_container">@android:color/system_on_primary_container_dark</color>
+    <color name="m3_secondary_container">@android:color/system_secondary_container_dark</color>
+    <color name="m3_on_secondary_container">@android:color/system_on_secondary_container_dark</color>
+    <color name="m3_tertiary_container">@android:color/system_tertiary_container_dark</color>
+    <color name="m3_on_tertiary_container">@android:color/system_on_tertiary_container_dark</color>
+    <color name="m3_surface">@android:color/system_surface_dark</color>
+    <color name="m3_surface_container_lowest">@android:color/system_surface_container_lowest_dark</color>
+    <color name="m3_surface_container_low">@android:color/system_surface_container_low_dark</color>
+    <color name="m3_surface_container">@android:color/system_surface_container_dark</color>
+    <color name="m3_surface_container_high">@android:color/system_surface_container_high_dark</color>
+    <color name="m3_surface_container_highest">@android:color/system_surface_container_highest_dark</color>
+    <color name="m3_on_surface">@android:color/system_on_surface_dark</color>
+    <color name="m3_on_surface_variant">@android:color/system_on_surface_variant_dark</color>
+    <color name="m3_outline">@android:color/system_outline_dark</color>
+    <color name="m3_outline_variant">@android:color/system_outline_variant_dark</color>
+    <color name="m3_error">@android:color/system_error_dark</color>
+    <color name="m3_on_error">@android:color/system_on_error_dark</color>
+    <color name="m3_error_container">@android:color/system_error_container_dark</color>
+    <color name="m3_on_error_container">@android:color/system_on_error_container_dark</color>
+    <color name="m3_inverse_surface">@android:color/system_neutral1_100</color>
+    <color name="m3_inverse_on_surface">@android:color/system_neutral1_900</color>
+    <color name="m3_inverse_primary">@android:color/system_primary_light</color>
+    <color name="m3_widget_background">@android:color/system_surface_dark</color>
+    <color name="m3_card_canvas">@color/m3_surface</color>
+    <color name="m3_card_surface">@color/m3_surface_container</color>
+    <color name="m3_icon_badge_bg">@color/m3_primary_container</color>
+    <color name="m3_icon_badge_fg">@color/m3_on_primary_container</color>
+
+    <color name="background_item_activated">#33FFFFFF</color>
+    <color name="background_item_pressed">#29FFFFFF</color>
+    <color name="contact_avatar_pressed_color">#40000000</color>
+    <color name="contact_picker_tab_pressed">#26FFFFFF</color>
+    <color name="gallery_image_pressed">#40FFFFFF</color>
+    <color name="fab_pressed_color">@android:color/system_accent1_600</color>
+    <color name="fab_ripple">#26FFFFFF</color>
+    <color name="compose_message_send_color_pressed">@android:color/system_accent1_300</color>
+
+    <color name="audio_progress_track_incoming">#33FFFFFF</color>
+    <color name="audio_progress_track_outgoing">#33FFFFFF</color>
+    <color name="fastscroll_track_color">#26FFFFFF</color>
+    <color name="fastscroll_thumb_color">#66FFFFFF</color>
+    <color name="ripple_material_light">#26FFFFFF</color>
+</resources>

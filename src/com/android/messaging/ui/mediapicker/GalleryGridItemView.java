@@ -151,8 +151,8 @@ public class GalleryGridItemView extends FrameLayout {
 
     private void updateImageView() {
         if (mData.isDocumentPickerItem()) {
-            setBackgroundColor(ConversationDrawables.get().getConversationThemeColor());
-            mIcon.setImageResource(R.drawable.ic_photo_library_light);
+            setBackgroundColor(getResources().getColor(R.color.m3_primary_container));
+            mIcon.setImageResource(R.drawable.ic_m3_photo_library);
             mIcon.clearColorFilter();
             mImageView.setVisibility(GONE);
             mIcon.setVisibility(VISIBLE);
@@ -163,7 +163,7 @@ public class GalleryGridItemView extends FrameLayout {
             if (ContentType.isAudioType(contentType)) {
                 setBackgroundColor(
                         getResources().getColor(R.color.gallery_image_default_background));
-                mIcon.setImageResource(R.drawable.ic_music);
+                mIcon.setImageResource(R.drawable.ic_m3_music);
                 mIcon.setColorFilter(
                         ConversationDrawables.get().getConversationThemeColor(),
                         PorterDuff.Mode.SRC_IN);
@@ -181,7 +181,7 @@ public class GalleryGridItemView extends FrameLayout {
                 mImageView.setImageResourceId(mData.getImageRequestDescriptor());
                 mImageView.setVisibility(VISIBLE);
                 if (ContentType.isVideoType(mData.getContentType())) {
-                    mIcon.setImageResource(R.drawable.ic_video_play_light);
+                    mIcon.setImageResource(R.drawable.ic_m3_video_play);
                     mIcon.clearColorFilter();
                     mIcon.setVisibility(VISIBLE);
                 } else {

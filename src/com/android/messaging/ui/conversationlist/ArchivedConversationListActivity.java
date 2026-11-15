@@ -23,6 +23,7 @@ import android.view.MenuItem;
 
 import com.android.messaging.R;
 import com.android.messaging.util.DebugUtils;
+import com.android.messaging.util.UiUtils;
 
 public class ArchivedConversationListActivity extends AbstractConversationListActivity {
 
@@ -40,9 +41,10 @@ public class ArchivedConversationListActivity extends AbstractConversationListAc
         actionBar.setTitle(getString(R.string.archived_activity_title));
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        actionBar.setBackgroundDrawable(new ColorDrawable(
-                getResources().getColor(
-                        R.color.archived_conversation_action_bar_background_color_dark)));
+        final int actionBarColor = getResources().getColor(
+                R.color.archived_conversation_action_bar_background_color_dark);
+        actionBar.setBackgroundDrawable(new ColorDrawable(actionBarColor));
+        UiUtils.setStatusBarColor(this, actionBarColor);
         actionBar.show();
         super.updateActionBar(actionBar);
     }

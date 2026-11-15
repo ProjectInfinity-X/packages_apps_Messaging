@@ -63,8 +63,9 @@ public class CaptchaKeywordsPreference extends PreferenceCategory implements
     private Preference makeAddPref() {
         Preference pref = new Preference(mContext);
         pref.setTitle(R.string.add_captcha_keyword);
-        pref.setIcon(R.drawable.ic_add);
+        pref.setIcon(R.drawable.ic_m3_pref_add);
         pref.setPersistent(false);
+        pref.setLayoutResource(R.layout.m3_preference_card);
         pref.setOnPreferenceClickListener(this);
         return pref;
     }
@@ -101,6 +102,7 @@ public class CaptchaKeywordsPreference extends PreferenceCategory implements
         pref.setKey(getKeyOfString(str));
         pref.setTitle(str);
         pref.setPersistent(false);
+        pref.setLayoutResource(R.layout.m3_preference_card);
         pref.setOnPreferenceClickListener(this);
         addPreference(pref);
     }

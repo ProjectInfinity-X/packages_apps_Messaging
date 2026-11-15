@@ -21,7 +21,10 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:background="?android:attr/selectableItemBackground"
-    android:padding="12dp"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingTop="14dp"
+    android:paddingBottom="14dp"
     android:clipToPadding="false">
 
     <LinearLayout
@@ -40,6 +43,7 @@
             android:singleLine="true"
             android:maxLines="1"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             style="@style/SimSelectorItem" />
 
         <TextView
@@ -49,6 +53,7 @@
             android:singleLine="true"
             android:maxLines="1"
             android:ellipsize="end"
+            android:paddingTop="2dp"
             style="@style/SimSelectorItemDetail" />
 
     </LinearLayout>
@@ -59,7 +64,6 @@
         android:layout_height="@dimen/sim_selector_icon_size"
         android:importantForAccessibility="no"
         android:layout_gravity="center_vertical"
-        android:elevation="3dp"
         app:iconSize="normal" />
 
 </com.android.messaging.ui.conversation.SimSelectorItemView>

@@ -18,6 +18,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/conversation_background"
     android:orientation="vertical"
     android:weightSum="1.0">
 
@@ -26,9 +27,6 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:orientation="vertical">
-        <!-- This FrameLayout will take all available height (excluding media picker)
-        but setting height to 0dp causes it not to shrink properly in KK, so a height of match_parent
-        works equally well -->
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -40,14 +38,15 @@
                 android:layout_height="match_parent"
                 android:listSelector="@android:color/transparent"
                 android:paddingTop="@dimen/action_bar_height"
+                android:paddingBottom="8dp"
                 android:clipToPadding="false" />
 
             <View
                 android:id="@+id/conversation_compose_divider"
                 android:layout_width="match_parent"
-                android:layout_height="4dp"
+                android:layout_height="1dp"
                 android:layout_gravity="bottom"
-                android:background="@drawable/conversation_compose_divider_gradient"
+                android:background="@color/m3_outline_variant"
                 android:alpha="0"
                 android:importantForAccessibility="no" />
 

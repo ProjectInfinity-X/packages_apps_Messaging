@@ -375,10 +375,10 @@ public class AudioAttachmentView extends LinearLayout {
                 ((MarginLayoutParams) mPlayPauseButton.getLayoutParams()).setMargins(0, 0, 0, 0);
                 final ImageView playButton = (ImageView) findViewById(R.id.play_button);
                 playButton.setImageDrawable(
-                        getResources().getDrawable(R.drawable.ic_preview_play));
+                        getResources().getDrawable(R.drawable.ic_m3_preview_play));
                 final ImageView pauseButton = (ImageView) findViewById(R.id.pause_button);
                 pauseButton.setImageDrawable(
-                        getResources().getDrawable(R.drawable.ic_preview_pause));
+                        getResources().getDrawable(R.drawable.ic_m3_preview_pause));
                 break;
 
             default:

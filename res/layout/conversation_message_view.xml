@@ -72,8 +72,7 @@
             android:id="@+id/message_text_and_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:forceDarkAllowed="false">
+            android:orientation="vertical">
 
             <LinearLayout
                 android:id="@+id/message_title_layout"
@@ -87,6 +86,7 @@
                     android:id="@+id/message_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
                     style="@style/ConversationMessageTitle" />
 
                 <TextView
@@ -109,6 +109,7 @@
                     android:text="@string/conversation_message_view_subject_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
                     style="@style/ConversationMessage" />
 
                 <TextView
@@ -124,6 +125,7 @@
                 style="@style/ConversationMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:lineSpacingExtra="2dp"
                 android:visibility="gone"
                 android:importantForAccessibility="no" />
 
@@ -139,7 +141,8 @@
                     android:id="@+id/message_sender_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:fontFamily="sans-serif-medium"
                     style="@style/ConversationMessageStatus"
                     android:visibility="gone" />
                 <TextView
@@ -157,11 +160,11 @@
                     android:visibility="gone" />
                 <ImageView
                     android:id="@+id/smsDeliveredBadge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
                     android:layout_gravity="center"
                     style="@style/SmsDeliverdBadge"
-                    android:src="@drawable/ic_sms_delivery_ok"
+                    android:src="@drawable/ic_m3_delivered"
                     android:visibility="gone" />
             </com.android.messaging.ui.LineWrapLayout>
 

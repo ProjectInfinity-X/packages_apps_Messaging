@@ -113,8 +113,7 @@ public class ContactRecipientAutoCompleteView extends RecipientEditTextView {
         addTextChangedListener(new ContactChipsWatcher());
         setOnFocusListShrinkRecipients(false);
 
-        setBackground(context.getResources().getDrawable(
-                androidx.appcompat.R.drawable.abc_textfield_search_default_mtrl_alpha));
+        setBackground(null);
     }
 
     public void setContactChipsListener(final ContactChipsChangeListener listener) {

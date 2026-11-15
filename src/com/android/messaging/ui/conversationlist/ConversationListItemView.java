@@ -21,6 +21,7 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import androidx.core.text.BidiFormatter;
 import androidx.core.text.TextDirectionHeuristicsCompat;
@@ -478,7 +479,7 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
                 audioPreviewVisiblity = VISIBLE;
             } else if (ContentType.isVideoType(previewContentType)) {
                 previewImageUri = UriUtil.getUriForResourceId(
-                        getContext(), R.drawable.ic_preview_play);
+                        getContext(), R.drawable.ic_m3_preview_play);
                 previewClickListener = fullScreenPreviewClickListener;
                 previewImageVisibility = VISIBLE;
             } else if (ContentType.isImageType(previewContentType)) {
@@ -501,16 +502,18 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
         mAudioAttachmentView.setOnLongClickListener(this);
         mAudioAttachmentView.setVisibility(audioPreviewVisiblity);
 
+        final Drawable deleteIcon = ImageUtils.getTintedDrawable(getContext(),
+                resources.getDrawable(R.drawable.ic_m3_delete),
+                resources.getColor(R.color.conversation_list_swipe_delete_icon));
+        final Drawable archiveIcon = ImageUtils.getTintedDrawable(getContext(),
+                resources.getDrawable(R.drawable.ic_m3_archive),
+                resources.getColor(R.color.conversation_list_swipe_archive_icon));
         if (PrefsUtils.isSwipeRightToDeleteEnabled()) {
-            mCrossSwipeArchiveLeftImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_delete_small_dark));
-            mCrossSwipeArchiveRightImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_archive_small_dark));
+            mCrossSwipeArchiveLeftImageView.setImageDrawable(deleteIcon);
+            mCrossSwipeArchiveRightImageView.setImageDrawable(archiveIcon);
         } else {
-            mCrossSwipeArchiveLeftImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_archive_small_dark));
-            mCrossSwipeArchiveRightImageView.setImageDrawable(getResources()
-                    .getDrawable(R.drawable.ic_archive_small_dark));
+            mCrossSwipeArchiveLeftImageView.setImageDrawable(archiveIcon);
+            mCrossSwipeArchiveRightImageView.setImageDrawable(archiveIcon);
         }
     }
 
@@ -537,11 +540,17 @@ public class ConversationListItemView extends FrameLayout implements OnClickList
             if (translationX > 0) {
                 mCrossSwipeArchiveLeftImageView.setVisibility(VISIBLE);
                 mCrossSwipeArchiveRightImageView.setVisibility(GONE);
+                mCrossSwipeBackground.setBackgroundResource(
+                        PrefsUtils.isSwipeRightToDeleteEnabled()
+                                ? R.drawable.conversation_swipe_delete_background
+                                : R.drawable.conversation_swipe_background);
             } else {
                 mCrossSwipeArchiveLeftImageView.setVisibility(GONE);
                 mCrossSwipeArchiveRightImageView.setVisibility(VISIBLE);
+                mCrossSwipeBackground.setBackgroundResource(
+                        R.drawable.conversation_swipe_background);
             }
-            mSwipeableContainer.setBackgroundResource(R.drawable.swipe_shadow_drag);
+            mSwipeableContainer.setBackgroundColor(Color.TRANSPARENT);
         }
     }
 

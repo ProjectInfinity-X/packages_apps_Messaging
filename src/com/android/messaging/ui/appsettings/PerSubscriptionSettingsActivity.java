@@ -47,6 +47,7 @@ import com.android.messaging.util.Assert;
 import com.android.messaging.util.BuglePrefs;
 import com.android.messaging.util.LogUtil;
 import com.android.messaging.util.PhoneUtils;
+import com.android.messaging.util.UiUtils;
 
 public class PerSubscriptionSettingsActivity extends BugleActionBarActivity {
     @Override
@@ -194,6 +195,12 @@ public class PerSubscriptionSettingsActivity extends BugleActionBarActivity {
             if (advancedCategory.getPreferenceCount() == 0) {
                 getPreferenceScreen().removePreference(advancedCategory);
             }
+        }
+
+        @Override
+        public void onActivityCreated(final Bundle savedInstanceState) {
+            super.onActivityCreated(savedInstanceState);
+            UiUtils.stylePreferenceListView(getView());
         }
 
         private boolean isCellBroadcastAppLinkEnabled() {

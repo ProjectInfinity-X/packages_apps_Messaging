@@ -212,7 +212,8 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
                 false);
         mMediaPickerPanel.setMediaPicker(this);
         mTabStrip = (LinearLayout) mMediaPickerPanel.findViewById(R.id.mediapicker_tabstrip);
-        mTabStrip.setBackgroundColor(mThemeColor);
+        mTabStrip.setBackgroundColor(getResources().getColor(
+                R.color.mediapicker_tabstrip_background));
         for (final MediaChooser chooser : mChoosers) {
             chooser.onCreateTabButton(inflater, mTabStrip);
             final boolean enabled = (chooser.getSupportedMediaTypes() & mSupportedMediaTypes) !=
@@ -297,8 +298,9 @@ public class MediaPicker extends Fragment implements DraftMessageSubscriptionDat
      */
     public void setConversationThemeColor(final int themeColor) {
         mThemeColor = themeColor;
-        if (mTabStrip != null) {
-            mTabStrip.setBackgroundColor(mThemeColor);
+        if (mTabStrip != null && isAdded()) {
+            mTabStrip.setBackgroundColor(getResources().getColor(
+                    R.color.mediapicker_tabstrip_background));
         }
 
         for (final MediaChooser chooser : mEnabledChoosers) {

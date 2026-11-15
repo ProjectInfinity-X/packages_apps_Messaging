@@ -89,7 +89,7 @@ class GalleryMediaChooser extends MediaChooser implements
 
     @Override
     public int getIconResource() {
-        return R.drawable.ic_image_light;
+        return R.drawable.ic_m3_gallery;
     }
 
     @Override

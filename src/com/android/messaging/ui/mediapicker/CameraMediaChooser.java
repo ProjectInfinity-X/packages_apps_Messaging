@@ -224,7 +224,7 @@ class CameraMediaChooser extends MediaChooser implements
 
     @Override
     public int getIconResource() {
-        return R.drawable.ic_camera_light;
+        return R.drawable.ic_m3_camera;
     }
 
     @Override
@@ -435,31 +435,31 @@ class CameraMediaChooser extends MediaChooser implements
                 fullScreen && !isRecording && CameraManager.get().hasFrontAndBackCamera() ?
                         View.VISIBLE : View.GONE);
         mSwapCameraButton.setImageResource(frontCamera ?
-                R.drawable.ic_camera_front_light :
-                R.drawable.ic_camera_rear_light);
+                R.drawable.ic_m3_flip_camera :
+                R.drawable.ic_m3_flip_camera);
         mSwapCameraButton.setEnabled(isCameraAvailable);
 
         mCancelVideoButton.setVisibility(isRecording ? View.VISIBLE : View.GONE);
         mVideoCounter.setVisibility(isRecording ? View.VISIBLE : View.GONE);
 
         mSwapModeButton.setImageResource(videoMode ?
-                R.drawable.ic_mp_camera_small_light :
-                R.drawable.ic_mp_video_small_light);
+                R.drawable.ic_m3_photo_camera :
+                R.drawable.ic_m3_videocam);
         mSwapModeButton.setContentDescription(context.getString(videoMode ?
                 R.string.camera_switch_to_still_mode : R.string.camera_switch_to_video_mode));
         mSwapModeButton.setVisibility(isRecording ? View.GONE : View.VISIBLE);
         mSwapModeButton.setEnabled(isCameraAvailable);
 
         if (isRecording) {
-            mCaptureButton.setImageResource(R.drawable.ic_mp_capture_stop_large_light);
+            mCaptureButton.setImageResource(R.drawable.ic_m3_camera_stop);
             mCaptureButton.setContentDescription(context.getString(
                     R.string.camera_stop_recording));
         } else if (videoMode) {
-            mCaptureButton.setImageResource(R.drawable.ic_mp_video_large_light);
+            mCaptureButton.setImageResource(R.drawable.ic_m3_videocam);
             mCaptureButton.setContentDescription(context.getString(
                     R.string.camera_start_recording));
         } else {
-            mCaptureButton.setImageResource(R.drawable.ic_checkmark_large_light);
+            mCaptureButton.setImageResource(R.drawable.ic_m3_camera_shutter);
             mCaptureButton.setContentDescription(context.getString(
                     R.string.camera_take_picture));
         }

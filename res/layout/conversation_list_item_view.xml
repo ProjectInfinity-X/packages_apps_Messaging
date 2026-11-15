@@ -18,7 +18,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp">
 
     <!-- The background displayed when the conversation is swiped sideways -->
     <LinearLayout
@@ -28,14 +31,17 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|start"
         android:baselineAligned="false"
-        android:background="@drawable/swipe_shadow"
+        android:background="@drawable/conversation_swipe_background"
         android:visibility="gone"
-        android:padding="@dimen/conversation_list_item_view_padding">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp">
         <ImageView
             android:id="@+id/crossSwipeArchiveIconLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|left"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:gravity="center_vertical|start"
             android:visibility="gone"
             android:importantForAccessibility="no"
             android:contentDescription="@null"/>
@@ -45,9 +51,9 @@
             android:layout_weight="1" />
         <ImageView
             android:id="@+id/crossSwipeArchiveIconRight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical|right"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical|end"
             android:visibility="gone"
             android:importantForAccessibility="no"
             android:contentDescription="@null"/>
@@ -63,12 +69,16 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
+            android:background="@drawable/m3_expressive_card_selectable_bg"
             android:clipToPadding="false"
             android:duplicateParentState="true"
-            android:padding="@dimen/conversation_list_item_view_padding">
+            android:gravity="center_vertical"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp">
 
-            <!-- Contact avatar on the left side of the view -->
+            <!-- Contact avatar on the start side of the view -->
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -92,10 +102,10 @@
                     android:background="@android:color/transparent" />
                 <ImageView
                     android:id="@+id/conversation_failed_status_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="bottom|end"
-                    android:src="@drawable/ic_failed_status_red"
+                    android:src="@drawable/ic_m3_error_badge"
                     android:visibility="gone"
                     android:importantForAccessibility="no"
                     android:contentDescription="@null"
@@ -104,41 +114,49 @@
 
             <!-- The conversation name, message preview, etc -->
             <LinearLayout
-                style="@style/ConversationListItemViewPaddingStyle"
                 android:orientation="vertical"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_gravity="top"
+                android:layout_gravity="center_vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="10dp"
                 android:background="@android:color/transparent">
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:background="@android:color/transparent">
-                    <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:background="@android:color/transparent">
-                        <TextView
-                            android:id="@+id/conversation_name"
-                            style="@style/ConversationListItemViewConversationNameStyle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:singleLine="true"
-                            android:layout_gravity="center_vertical"
-                            android:paddingBottom="2dp" />
-                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/conversation_name"
+                        style="@style/ConversationListItemViewConversationNameStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:layout_gravity="center_vertical"
+                        android:paddingBottom="2dp" />
                     <ImageView
-                            android:id="@+id/work_profile_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:background="@android:color/transparent"
-                            android:scaleType="center"
-                            android:src="@drawable/ic_work_profile"
-                            android:visibility="gone"/>
+                        android:id="@+id/work_profile_icon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@android:color/transparent"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_m3_work_profile"
+                        android:visibility="gone"/>
+                    <TextView
+                        android:id="@+id/conversation_timestamp"
+                        style="@style/ConversationListItemViewTextStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:textSize="12sp"
+                        android:layout_gravity="center_vertical" />
                 </LinearLayout>
                 <TextView
                     android:id="@+id/conversation_subject"
@@ -146,7 +164,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:paddingBottom="3dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="1dp"
                     android:ellipsize="end"
                     android:visibility="gone" />
                 <TextView
@@ -154,24 +173,19 @@
                     style="@style/ConversationListItemViewTextStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="3dp"
+                    android:paddingTop="2dp"
+                    android:lineSpacingExtra="2dp"
                     android:ellipsize="end" />
-                <TextView
-                    android:id="@+id/conversation_timestamp"
-                    style="@style/ConversationListItemViewTextStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <!-- The attachment preview on the right side of the view -->
+            <!-- The attachment preview on the end side of the view -->
             <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="top|end"
+                android:layout_gravity="center_vertical|end"
                 android:background="@android:color/transparent">
                 <com.android.messaging.ui.AsyncImageView
                     android:id="@+id/conversation_image_preview"
-                    style="@style/ConversationListItemViewPaddingStyle"
                     app:cornerRadius="@dimen/conversation_list_image_preview_corner_radius"
                     android:layout_width="@dimen/conversation_list_image_preview_size"
                     android:layout_height="@dimen/conversation_list_image_preview_size"
